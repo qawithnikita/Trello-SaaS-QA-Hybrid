@@ -1,0 +1,32 @@
+# Node modules
+node_modules/
+
+# TypeScript compiled output
+dist/
+
+# Playwright test artifacts
+test-results/
+reports/
+screenshots/
+videos/
+trace/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Optional IDE/editor files
+.vscode/
+.idea/
+*.iml
+
+# npm package lock (optional if using yarn)
+package-lock.json
+yarn.lock

@@ -1,126 +1,171 @@
-# Trello-SaaS-Combined: Manual + Automation + Simulated AI
+# Trello SaaS — QA Automation Framework
 
 ## Project Overview
-This project demonstrates an **end-to-end QA lifecycle** for a Trello-like SaaS application, combining **manual testing**, **automation testing**, and **simulated AI task suggestions**. It covers core SaaS workflows including **Boards**, **Tasks**, **Users**, and **Roles**, while validating **RBAC (Role-Based Access Control)** for Admin, Member, and Observer roles.  
 
-**Technologies Used:**  
-- Manual Testing: Test Plans, Test Cases, Bug Reports  
-- Automation: Playwright + TypeScript + Page Object Model (POM)  
-- Simulated AI: Dynamic task suggestions for innovation  
+A UI test automation framework for a Trello-like SaaS application, built with **Playwright and TypeScript** using the Page Object Model (POM).
 
-##  Objectives
-- Test core SaaS workflows: Boards, Tasks, Users, Roles  
-- Validate RBAC (Admin, Member, Observer)  
-- Execute manual test cases and log bugs  
-- Implement automation for regression, RBAC checks, and core flows  
-- Simulate AI task suggestions for a dynamic testing edge  
-- Showcase a complete QA portfolio project  
+The project focuses on automating critical SaaS workflows, validating Role-Based Access Control (RBAC), and maintaining reliable regression coverage for board management, task management, authentication, and simulated AI task suggestions.
 
+It demonstrates a structured approach to building maintainable, reusable, and scalable end-to-end test automation.
 
-##  Project Structure
+## Technologies Used
 
+- **Language:** TypeScript
+- **Automation:** Playwright
+- **Design Pattern:** Page Object Model (POM)
+- **Test Coverage:** UI, authentication, RBAC, regression, and task workflows
+- **CI/CD:** GitHub Actions
+- **Reporting:** Playwright HTML Reporter
+
+## Key Objectives
+
+- Automate critical user journeys in a Trello-like SaaS application.
+- Validate authentication and role-specific permissions.
+- Test board creation, deletion, and member management.
+- Automate task creation, assignment, updates, and status changes.
+- Validate simulated AI-generated task suggestions.
+- Build reusable page objects, fixtures, and test utilities.
+- Support automated test execution and reporting through GitHub Actions.
+
+## Project Structure
+
+```text
 Trello-SaaS-Combined/
-│
 ├── README.md
-├── ManualTesting/
-│ ├── TestPlan.md
-│ ├── TestCases/
-│ │ ├── auth_testcases.md
-│ │ ├── board_testcases.md
-│ │ └── task_testcases.md
-│ └── BugReports/
-│ └── Screenshots + logs
-├── Automation/
-│ ├── package.json
-│ ├── tsconfig.json
-│ ├── playwright.config.ts
-│ ├── tests/
-│ │ ├── auth.spec.ts
-│ │ ├── board.spec.ts
-│ │ ├── task.spec.ts
-│ │ └── ai.spec.ts
-│ ├── pages/
-│ │ ├── BasePage.ts
-│ │ ├── LoginPage.ts
-│ │ ├── BoardPage.ts
-│ │ └── TaskPage.ts
-│ ├── fixtures/
-│ │ ├── users.ts
-│ │ └── tasks.ts
-│ ├── helpers/
-│ │ └── AIHelper.ts
-│ └── reports/
-│ └── html/
+└── Automation/
+    ├── package.json
+    ├── tsconfig.json
+    ├── playwright.config.ts
+    ├── tests/
+    │   ├── auth.spec.ts
+    │   ├── board.spec.ts
+    │   ├── task.spec.ts
+    │   └── ai.spec.ts
+    ├── pages/
+    │   ├── BasePage.ts
+    │   ├── LoginPage.ts
+    │   ├── BoardPage.ts
+    │   └── TaskPage.ts
+    ├── fixtures/
+    │   ├── users.ts
+    │   └── tasks.ts
+    ├── helpers/
+    │   └── AIHelper.ts
+    └── reports/
+        └── html/
+```
 
-markdown
-Copy code
+*The structure above reflects the intended project layout; update it if your current repository differs.*
+
+## Automated Test Coverage
+
+### 1. Authentication and RBAC
+
+- Validate successful and unsuccessful login scenarios.
+- Verify access based on Admin, Member, and Observer roles.
+- Confirm that restricted actions are unavailable to unauthorized users.
+- Validate role-specific access to boards and tasks.
+
+### 2. Board Management
+
+- Create and delete boards with appropriate permissions.
+- Manage board members and role assignments.
+- Validate authorization rules for board-level actions.
+
+### 3. Task Management
+
+- Create and update tasks.
+- Assign tasks to members.
+- Manage labels, due dates, and comments.
+- Move tasks between workflow statuses.
+- Verify that Observer users cannot modify tasks.
+
+### 4. Simulated AI Task Suggestions
+
+- Generate simulated suggestions for task improvements.
+- Validate suggestions such as adding checklists, assigning members, setting due dates, and applying labels.
+- Verify that applying a suggestion updates the relevant task correctly.
+
+**Note:** AI suggestions are simulated through test helper logic. This project does not claim to integrate with a real AI model.
+
+## Framework Design
+
+### Page Object Model
+
+Page classes encapsulate page-specific locators and user interactions, separating test scenarios from UI implementation details.
+
+### Test Fixtures and Data
+
+Reusable fixtures and test data support role-based scenarios and consistent test execution across authentication, board, and task workflows.
+
+### Reusable Helpers
+
+Shared helper utilities reduce duplication and centralize common test operations, including simulated AI suggestion generation.
+
+### Assertions and Reliability
+
+Playwright assertions validate application behavior and expected UI states. Reliable locators and appropriate synchronization help reduce flaky test execution.
+
+## CI/CD Integration
+
+GitHub Actions can execute the Playwright test suite automatically as part of a configured workflow.
+
+The pipeline can support:
+
+- Automated dependency installation.
+- Playwright browser installation.
+- Automated test execution.
+- Test result collection.
+- HTML report generation and artifact retention.
+
+## Running the Tests
+
+Run these commands from the `Automation` directory.
+
+Install dependencies:
+
+```bash
+npm ci
+```
+
+Install Playwright browsers:
+
+```bash
+npx playwright install --with-deps
+```
+
+Run all tests:
+
+```bash
+npx playwright test
+```
+
+Open the HTML report:
+
+```bash
+npx playwright show-report
+```
+
+## Project Goals
+
+This project demonstrates practical skills in:
+
+- TypeScript-based UI automation.
+- Playwright framework development.
+- Page Object Model implementation.
+- Authentication and RBAC testing.
+- End-to-end regression automation.
+- Test data and fixture management.
+- CI/CD test execution and reporting.
+
+## Future Improvements
+
+- Expand regression coverage for critical SaaS workflows.
+- Improve test isolation and test data management.
+- Add API-level validation where supported.
+- Enhance CI reporting and failure diagnostics.
+- Extend cross-browser coverage.
 
 ---
 
-##  Manual Testing Plan
-
-### A. Authentication & RBAC
-- **Admin:** Login, create/delete boards, invite/remove members  
-- **Member:** Create/move tasks, cannot delete boards  
-- **Observer:** View-only access  
-**Expected:** Permissions strictly enforced  
-
-### B. Board Management
-- Create boards (Admin)  
-- Invite members with specific roles (Admin)  
-- Delete board (Admin only)  
-**Expected:** Correct restrictions applied  
-
-### C. Task Management
-- Create tasks/cards, assign members  
-- Add labels, due dates, comments  
-- Move completed tasks to "Done"  
-- Observer: cannot modify tasks  
-**Expected:** Tasks behave per role  
-
-### D. Simulated AI Suggestions
-- Example: "Add checklist", "Assign member", "Set due date"  
-- Verify suggestions apply correctly  
-**Expected:** Task updated as per AI simulation  
-
-
-## Automation Testing Plan
-
-### Why Automation?
-- Regression testing: ensure old flows remain intact  
-- Repetitive checks: RBAC rules, task creation  
-- Faster execution: 50+ test cases run in minutes  
-- Consistency: avoid human error  
-- Portfolio showcase: Playwright + POM in action  
-
-### Tests
-- `auth.spec.ts` → Login + role validation  
-- `board.spec.ts` → Board creation, deletion, member invites  
-- `task.spec.ts` → Task lifecycle management  
-- `ai.spec.ts` → Apply simulated AI suggestions  
-
-### Fixtures
-- `users.ts`: Admin, Member, Observer accounts  
-- `tasks.ts`: Sample task titles, labels, priorities  
-
-### Helpers
-- `AIHelper.ts`: Simulates AI suggestions  
-```ts
-export const getAISuggestion = (taskTitle: string) => {
-  const suggestions = [
-    `Add checklist to "${taskTitle}"`,
-    `Assign member to "${taskTitle}"`,
-    `Set due date for "${taskTitle}"`,
-    `Add label "Urgent" to "${taskTitle}"`
-  ];
-  return suggestions[Math.floor(Math.random() * suggestions.length)];
-};
-Page Objects
-BasePage.ts: Common utilities (click, fill, wait)
-
-LoginPage.ts: Role-specific login methods
-
-BoardPage.ts: Create/delete boards, manage members
-
-TaskPage.ts: Task lifecycle + apply AI suggestions
-
+**Project Focus:** Maintainable Playwright automation for SaaS applications, with an emphasis on reliable regression coverage, authorization testing, and practical CI/CD integration.
